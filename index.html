@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tushar Khoche — AI & ML Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep:    #070b14;
+    --bg-card:    #0d1526;
+    --bg-hover:   #131e35;
+    --accent:     #00b4d8;
+    --accent2:    #f4a261;
+    --text:       #eef2ff;
+    --text-sub:   #8892a4;
+    --text-muted: #4a5568;
+    --border:     rgba(255,255,255,0.07);
+    --glow:       rgba(0,180,216,0.18);
+    --glow2:      rgba(244,162,97,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Grid background ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,180,216,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,180,216,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 6%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(7,11,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 6% 5rem;
+    position: relative;
+  }
+
+  .hero-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s forwards;
+  }
+  .hero-name span {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(0,180,216,0.6);
+  }
+
+  .hero-title {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--text-sub);
+    margin-top: 1.2rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.6s forwards;
+  }
+  .hero-title strong { color: var(--accent2); font-weight: 500; }
+
+  .hero-desc {
+    max-width: 600px;
+    margin-top: 1.5rem;
+    color: var(--text-sub);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.8s forwards;
+  }
+
+  .hero-cta {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 1s forwards;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg-deep);
+    font-weight: 500;
+  }
+  .btn-primary:hover { background: #00d4ff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,180,216,0.35); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-sub);
+    border: 1px solid transparent;
+  }
+  .btn-ghost:hover { color: var(--accent2); }
+
+  /* ── STATS ── */
+  .stats-bar {
+    display: flex; flex-wrap: wrap;
+    gap: 0; margin-top: 4rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 700px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 1.2s forwards;
+  }
+  .stat {
+    flex: 1; min-width: 140px;
+    padding: 1.2rem 1.5rem;
+    border-right: 1px solid var(--border);
+    background: rgba(13,21,38,0.5);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 6%; position: relative; }
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 3rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+    gap: 1.5px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover { background: var(--bg-hover); }
+  .project-card:hover::before { opacity: 1; }
+
+  .project-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 3px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+  .project-tag.ieee {
+    border-color: var(--accent2);
+    color: var(--accent2);
+  }
+
+  .project-name {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-desc {
+    color: var(--text-sub);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-bottom: 1.8rem;
+  }
+  .pill {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(0,180,216,0.08);
+    border: 1px solid rgba(0,180,216,0.2);
+    color: var(--text-sub);
+    border-radius: 3px;
+  }
+
+  .project-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .project-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    display: flex; align-items: center; gap: 0.35rem;
+    transition: color 0.2s;
+  }
+  .project-link:hover { color: #00d4ff; }
+  .project-link.secondary { color: var(--text-sub); }
+  .project-link.secondary:hover { color: var(--text); }
+
+  /* ── SKILLS ── */
+  #skills { background: rgba(13,21,38,0.3); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  .skill-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.8rem;
+    transition: border-color 0.25s;
+  }
+  .skill-group:hover { border-color: rgba(0,180,216,0.3); }
+  .skill-group-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .skill-list {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .skill-tag {
+    font-size: 0.82rem;
+    color: var(--text-sub);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2.5rem;
+    max-width: 860px;
+    position: relative;
+    overflow: hidden;
+  }
+  .exp-card::after {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--accent2));
+  }
+  .exp-meta {
+    display: flex; flex-wrap: wrap;
+    justify-content: space-between; align-items: flex-start;
+    gap: 0.5rem; margin-bottom: 0.5rem;
+  }
+  .exp-role {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .exp-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    border: 1px solid rgba(0,180,216,0.3);
+    padding: 0.25rem 0.75rem;
+    border-radius: 3px;
+  }
+  .exp-company {
+    color: var(--accent2);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .exp-bullets li {
+    color: var(--text-sub);
+    font-size: 0.95rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.7;
+  }
+  .exp-bullets li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+    top: 0.25rem;
+  }
+  .exp-bullets strong { color: var(--text); font-weight: 500; }
+
+  /* ── EDUCATION & CERT ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: border-color 0.25s;
+  }
+  .edu-card:hover { border-color: rgba(0,180,216,0.3); }
+  .edu-type {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent2);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .edu-degree {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+  .edu-school { color: var(--text-sub); font-size: 0.9rem; margin-bottom: 0.4rem; }
+  .edu-year {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+  }
+
+  /* ── PUBLICATION ── */
+  .pub-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(244,162,97,0.25);
+    border-radius: 8px;
+    padding: 2.5rem;
+    max-width: 860px;
+    display: flex; flex-wrap: wrap; gap: 2rem;
+    align-items: flex-start;
+    position: relative; overflow: hidden;
+  }
+  .pub-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at top left, var(--glow2), transparent 60%);
+    pointer-events: none;
+  }
+  .pub-badge {
+    flex-shrink: 0;
+    width: 60px; height: 60px;
+    background: rgba(244,162,97,0.1);
+    border: 1px solid rgba(244,162,97,0.3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+  }
+  .pub-content { flex: 1; min-width: 200px; }
+  .pub-journal {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent2);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .pub-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .pub-desc { color: var(--text-sub); font-size: 0.92rem; margin-bottom: 1.2rem; }
+
+  /* ── CONTACT ── */
+  #contact {
+    text-align: center;
+    background: rgba(13,21,38,0.3);
+  }
+  .contact-box {
+    max-width: 640px; margin: 0 auto;
+  }
+  .contact-tagline {
+    font-size: 1.05rem;
+    color: var(--text-sub);
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .contact-links {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.85rem 1.75rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text-sub);
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .contact-link.highlight {
+    border-color: rgba(0,180,216,0.4);
+    color: var(--accent);
+    background: rgba(0,180,216,0.06);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem 6%;
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0 6%;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 4%; }
+    .nav-links { gap: 1.5rem; }
+    section { padding: 4rem 4%; }
+    #hero { padding: 7rem 4% 4rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .stats-bar { flex-direction: column; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:last-child { border-bottom: none; }
+  }
+
+  @media (max-width: 520px) {
+    .nav-links { display: none; }
+    .hero-cta { flex-direction: column; }
+    .btn { text-align: center; justify-content: center; }
+  }
+
+  /* ── GLOW ACCENT ── */
+  .glow-accent {
+    position: absolute; width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#hero" class="nav-logo">TK.dev</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publication">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="glow-accent" style="top:-100px;left:-100px;"></div>
+  <p class="hero-label">// Available for AI Development Roles · Canada & Global</p>
+  <h1 class="hero-name">Tushar <span>Khoche.</span></h1>
+  <p class="hero-title">AI & ML Developer · <strong>Building Production-Grade Intelligent Systems</strong></p>
+  <p class="hero-desc">
+    I architect end-to-end AI systems — from LangGraph agentic pipelines and RAG applications to deep learning models — with the engineering rigour that makes them reliable in production. IEEE-published researcher. 175-test AI systems. Live-deployed.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn btn-primary">View Projects →</a>
+    <a href="https://tushark2111-focused-research-agent.hf.space" target="_blank" class="btn btn-outline">🚀 Live Demo</a>
+    <a href="https://github.com/tusharkhoche" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">AI Projects Built</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Years Engineering</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Live Deployment</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">IEEE</div>
+      <div class="stat-label">Published</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <p class="section-label reveal">// 01 · Work</p>
+  <h2 class="section-title reveal">AI Projects</h2>
+
+  <div class="projects-grid reveal">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <span class="project-tag">🔬 Flagship · Live</span>
+      <h3 class="project-name">Focused Research Agent</h3>
+      <p class="project-desc">
+        Production-grade full-stack agentic AI research system. 6-layer clean architecture — Streamlit UI → FastAPI → Application → LangGraph → LLM/Search Providers → SQLite. 7-node StateGraph pipeline with conditional error routing. Three research modes: Quick Research, Conversational Chat with memory, and Full Report with live web search and image rendering.
+      </p>
+      <div class="tech-pills">
+        <span class="pill">LangGraph</span><span class="pill">FastAPI</span><span class="pill">Streamlit</span>
+        <span class="pill">Groq · Llama 3.3 70B</span><span class="pill">Tavily</span><span class="pill">SQLite</span>
+        <span class="pill">Docker</span><span class="pill">pytest</span><span class="pill">SonarCloud</span>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--accent);margin-bottom:1.2rem;">
+        175 tests · 8 test strategies · SonarCloud quality gate
+      </div>
+      <div class="project-links">
+        <a href="https://tushark2111-focused-research-agent.hf.space" target="_blank" class="project-link">🚀 Live Demo ↗</a>
+        <a href="https://github.com/tusharkhoche/focused-research-agent" target="_blank" class="project-link secondary">GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <span class="project-tag">🔍 GenAI · RAG</span>
+      <h3 class="project-name">Query Quencher</h3>
+      <p class="project-desc">
+        End-to-end Retrieval-Augmented Generation application enabling conversational Q&A over private documents (PDF, DOCX, TXT). Full pipeline: document ingestion, recursive text splitting, HuggingFace embeddings, ChromaDB vector store, history-aware retrieval for grounded multi-turn conversations.
+      </p>
+      <div class="tech-pills">
+        <span class="pill">LangChain</span><span class="pill">LLaMA 3.1</span><span class="pill">Ollama</span>
+        <span class="pill">ChromaDB</span><span class="pill">HuggingFace</span><span class="pill">Python</span>
+        <span class="pill">RAGAS</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/tusharkhoche/QueryQuencher" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <span class="project-tag">🧠 Agentic AI</span>
+      <h3 class="project-name">Mood Journal Agent</h3>
+      <p class="project-desc">
+        A LangGraph StateGraph agentic AI that analyzes journal entries, classifies sentiment, extracts thematic tags, generates supportive reflections, and persists history across sessions. Built as a hands-on learning project to explore LangGraph node architecture, shared state management, and LLM integration with Groq API.
+      </p>
+      <div class="tech-pills">
+        <span class="pill">LangGraph</span><span class="pill">Groq API</span><span class="pill">LLaMA</span>
+        <span class="pill">StateGraph</span><span class="pill">JSON persistence</span><span class="pill">Python</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/tusharkhoche/mood_journal_agent" target="_blank" class="project-link">GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card">
+      <span class="project-tag ieee">📄 IEEE Published</span>
+      <h3 class="project-name">Distracted Driver Monitoring</h3>
+      <p class="project-desc">
+        End-to-end real-time Computer Vision system for driver distraction classification. Dual-model architecture integrating CenterNet for human pose estimation with custom-trained ResNet for object detection. Rule-based fusion engine classifying 10 distraction categories with a dynamic distraction score. Research published in IEEE Xplore.
+      </p>
+      <div class="tech-pills">
+        <span class="pill">Python</span><span class="pill">TensorFlow</span><span class="pill">OpenCV</span>
+        <span class="pill">CenterNet</span><span class="pill">ResNet</span><span class="pill">CLAHE</span>
+      </div>
+      <div class="project-links">
+        <a href="https://ieeexplore.ieee.org/document/9791545" target="_blank" class="project-link" style="color:var(--accent2);">IEEE Xplore ↗</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Additional ML Projects -->
+  <div style="margin-top:2.5rem;" class="reveal">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--text-muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.2rem;">
+      Additional ML Projects
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.75rem;">
+      <span style="background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:0.5rem 1rem;font-size:0.85rem;color:var(--text-sub);">Parkinson's Diagnosis · Ensemble Methods</span>
+      <span style="background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:0.5rem 1rem;font-size:0.85rem;color:var(--text-sub);">Loan Prediction · 95.87% accuracy</span>
+      <span style="background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:0.5rem 1rem;font-size:0.85rem;color:var(--text-sub);">Plant Classification · CNN/Keras</span>
+      <span style="background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:0.5rem 1rem;font-size:0.85rem;color:var(--text-sub);">Transfer Learning · VGG & ResNet</span>
+      <span style="background:var(--bg-card);border:1px solid var(--border);border-radius:5px;padding:0.5rem 1rem;font-size:0.85rem;color:var(--text-sub);">Vehicle Classification · PCA + SVM</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <p class="section-label reveal">// 02 · Stack</p>
+  <h2 class="section-title reveal">Technical Toolkit</h2>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <p class="skill-group-title">GenAI & Agentic AI</p>
+      <div class="skill-list">
+        <span class="skill-tag">LangChain</span>
+        <span class="skill-tag">LangGraph</span>
+        <span class="skill-tag">RAG</span>
+        <span class="skill-tag">Ollama</span>
+        <span class="skill-tag">Groq</span>
+        <span class="skill-tag">HuggingFace</span>
+        <span class="skill-tag">ChromaDB</span>
+        <span class="skill-tag">Tavily</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Frameworks & APIs</p>
+      <div class="skill-list">
+        <span class="skill-tag">FastAPI</span>
+        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">SQLAlchemy</span>
+        <span class="skill-tag">Pydantic</span>
+        <span class="skill-tag">httpx</span>
+        <span class="skill-tag">Docker</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">ML & Deep Learning</p>
+      <div class="skill-list">
+        <span class="skill-tag">TensorFlow</span>
+        <span class="skill-tag">Keras</span>
+        <span class="skill-tag">Scikit-learn</span>
+        <span class="skill-tag">CNNs</span>
+        <span class="skill-tag">Transfer Learning</span>
+        <span class="skill-tag">Ensemble Methods</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Testing & Quality</p>
+      <div class="skill-list">
+        <span class="skill-tag">pytest</span>
+        <span class="skill-tag">SonarCloud</span>
+        <span class="skill-tag">TDD</span>
+        <span class="skill-tag">FastAPI TestClient</span>
+        <span class="skill-tag">CI/CD</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Languages</p>
+      <div class="skill-list">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-title">Data Science</p>
+      <div class="skill-list">
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Matplotlib</span>
+        <span class="skill-tag">Seaborn</span>
+        <span class="skill-tag">Jupyter</span>
+        <span class="skill-tag">Kaggle</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EXPERIENCE ── -->
+<section id="experience">
+  <p class="section-label reveal">// 03 · Career</p>
+  <h2 class="section-title reveal">Experience</h2>
+  <div class="exp-card reveal">
+    <div class="exp-meta">
+      <h3 class="exp-role">Lead QA Engineer — Automation</h3>
+      <span class="exp-date">Nov 2021 — Present</span>
+    </div>
+    <p class="exp-company">EPAM Systems · Canada</p>
+    <p style="color:var(--text-muted);font-style:italic;font-size:0.88rem;margin-bottom:1.2rem;">Project: Investment Advice and Monitoring Platform</p>
+    <ul class="exp-bullets">
+      <li>Architected a scalable UI test automation framework from scratch using <strong>Java, Selenium, and Cucumber</strong>, reducing regression testing time by an estimated 40% and establishing the foundation for all future QA automation.</li>
+      <li>Led adoption of QA best practices including mandatory code reviews and <strong>CI/CD pipeline integration</strong> (Jenkins / Azure DevOps), decreasing post-deployment bugs by approximately 25%.</li>
+      <li>Integrated EPAM Report Portal to create a centralized automation dashboard, leveraging its <strong>AI-powered Auto-Analyzer</strong> to automatically triage test failures and accelerate root cause analysis.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <p class="section-label reveal">// 04 · Education</p>
+  <h2 class="section-title reveal">Education & Certifications</h2>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <p class="edu-type">Post Graduate Program</p>
+      <h3 class="edu-degree">Artificial Intelligence & Machine Learning</h3>
+      <p class="edu-school">Great Lakes Executive Learning × UT Austin McCombs School of Business</p>
+      <p class="edu-year">2021 · <a href="https://verify.mygreatlearning.com/MCCAOWIE" target="_blank" style="color:var(--accent);text-decoration:none;font-size:0.7rem;">Verify Certificate ↗</a></p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-type">Bachelor of Engineering</p>
+      <h3 class="edu-degree">Electronics & Communication Engineering</h3>
+      <p class="edu-school">Rajiv Gandhi Technical University</p>
+      <p class="edu-year">Electronics & Communication · Minor: Computer Science</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── PUBLICATION ── -->
+<section id="publication">
+  <p class="section-label reveal">// 05 · Research</p>
+  <h2 class="section-title reveal">Publication</h2>
+  <div class="pub-card reveal">
+    <div class="pub-badge">📄</div>
+    <div class="pub-content">
+      <p class="pub-journal">IEEE Conference Publication · IEEE Xplore · 2021</p>
+      <h3 class="pub-title">Distracted Driver Monitoring System Using AI</h3>
+      <p class="pub-desc">
+        Peer-reviewed publication presenting an end-to-end real-time driver distraction detection system using a dual-model computer vision architecture integrating CenterNet pose estimation with custom ResNet object detection, classifying 10 distraction categories with a dynamic distraction score.
+      </p>
+      <a href="https://ieeexplore.ieee.org/document/9791545" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.6rem 1.25rem;">
+        View on IEEE Xplore ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-box">
+    <p class="section-label reveal" style="text-align:center;">// 06 · Let's Talk</p>
+    <h2 class="section-title reveal" style="text-align:center;">Open to AI Development<br>Opportunities</h2>
+    <p class="contact-tagline reveal">
+      I'm actively looking for AI development roles in Canada and globally. The fastest way to reach me is LinkedIn. Resume and live demo are one click away.
+    </p>
+    <div class="contact-links reveal">
+      <a href="https://linkedin.com/in/tusharkhoche" target="_blank" class="contact-link highlight">
+        <span>in</span> LinkedIn
+      </a>
+      <a href="mailto:tusharkhoche@gmail.com" class="contact-link">
+        ✉ Email
+      </a>
+      <a href="https://github.com/tusharkhoche" target="_blank" class="contact-link">
+        ⌥ GitHub
+      </a>
+      <a href="https://www.kaggle.com/tusharkhoche" target="_blank" class="contact-link">
+        ◈ Kaggle
+      </a>
+      <a href="https://tushark2111-focused-research-agent.hf.space" target="_blank" class="contact-link">
+        🚀 Live Demo
+      </a>
+    </div>
+    <p class="reveal" style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--text-muted);letter-spacing:0.1em;">
+      tusharkhoche@gmail.com · 519-781-6392 · Canada
+    </p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  © 2026 · TUSHAR KHOCHE · AI & ML DEVELOPER · CANADA
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav active state
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      if (window.scrollY >= section.offsetTop - 100) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + current
+        ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
