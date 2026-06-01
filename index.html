@@ -15,7 +15,7 @@
     --accent:     #00b4d8;
     --accent2:    #f4a261;
     --text:       #eef2ff;
-    --text-sub:   #8892a4;
+    --text-sub:   #9ba5b7;
     --text-muted: #4a5568;
     --border:     rgba(255,255,255,0.07);
     --glow:       rgba(0,180,216,0.18);
@@ -214,7 +214,7 @@
     margin-bottom: 0.75rem;
   }
   .section-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Outfit', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     line-height: 1.1;
@@ -590,7 +590,7 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <a href="#hero" class="nav-logo">Tushar</a>
+  <a href="#hero" class="nav-logo">Home</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -607,6 +607,9 @@
   <p class="hero-label">// Available for AI Development Roles · Canada & Global</p>
   <h1 class="hero-name">Tushar <span>Khoche.</span></h1>
   <p class="hero-title">AI & ML Developer · <strong>Building Production-Grade Intelligent Systems</strong></p>
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--accent);margin-bottom:0.8rem;letter-spacing:0.03em;">
+    Focused on GenAI · RAG · LangGraph agents · production AI applications
+  </p>
   <p class="hero-desc">
     I architect end-to-end AI systems — from LangGraph agentic pipelines and RAG applications to deep learning models — with the engineering rigour that makes them reliable in production. IEEE-published researcher. Live-deployed.
   </p>
@@ -649,17 +652,115 @@
     <div class="project-card">
       <span class="project-tag">🔬 Flagship · Live</span>
       <h3 class="project-name">Focused Research Agent</h3>
-      <p class="project-desc">
-        Production-grade full-stack agentic AI research system. 6-layer clean architecture — Streamlit UI → FastAPI → Application → LangGraph → LLM/Search Providers → SQLite. 7-node StateGraph pipeline with conditional error routing. Three research modes: Quick Research, Conversational Chat with memory, and Full Report with live web search and image rendering.
+
+      <!-- Problem hook -->
+      <p style="font-size:0.97rem;color:var(--text);margin-bottom:0.6rem;font-weight:500;">
+        Most LLM apps just wrap a prompt. This one builds a full research pipeline.
       </p>
+      <p class="project-desc" style="margin-bottom:1.1rem;">
+        Ask any research question — the agent scopes it, plans targeted web searches, gathers live sources, ranks them by domain trust, and synthesizes a cited answer. Three modes: Quick Research (~15s), Conversational Chat with memory, and Full Report with images.
+      </p>
+
+      <!-- Architecture diagram -->
+      <div style="margin-bottom:1.3rem;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem;">6-Layer Architecture</div>
+        <svg viewBox="0 0 520 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;border-radius:8px;">
+          <defs>
+            <linearGradient id="layerGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#1a2a4a;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1e3356;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="layerGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#162240;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#1a2d50;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#0077a8;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#00b4d8;stop-opacity:1" />
+            </linearGradient>
+            <marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+              <polygon points="0 0, 7 3.5, 0 7" fill="#00b4d8" opacity="0.7"/>
+            </marker>
+          </defs>
+
+          <!-- background -->
+          <rect width="520" height="310" fill="#0d1526" rx="8"/>
+
+          <!-- Layer boxes -->
+          <!-- L1: UI -->
+          <rect x="30" y="16" width="460" height="38" rx="5" fill="url(#layerGrad1)" stroke="#00b4d8" stroke-width="1" stroke-opacity="0.5"/>
+          <text x="50" y="31" font-family="IBM Plex Mono,monospace" font-size="9" fill="#00b4d8" font-weight="500">UI LAYER</text>
+          <text x="50" y="46" font-family="IBM Plex Mono,monospace" font-size="8" fill="#8892a4">Streamlit — Home · Research · Chat · Report — thin client, HTTP only</text>
+
+          <!-- arrow -->
+          <line x1="260" y1="54" x2="260" y2="66" stroke="#00b4d8" stroke-width="1.5" stroke-opacity="0.6" marker-end="url(#arrow)"/>
+          <text x="268" y="62" font-family="IBM Plex Mono,monospace" font-size="7" fill="#8892a4">HTTP</text>
+
+          <!-- L2: API -->
+          <rect x="30" y="68" width="460" height="38" rx="5" fill="url(#layerGrad2)" stroke="#00b4d8" stroke-width="1" stroke-opacity="0.4"/>
+          <text x="50" y="83" font-family="IBM Plex Mono,monospace" font-size="9" fill="#00b4d8" font-weight="500">API LAYER</text>
+          <text x="50" y="98" font-family="IBM Plex Mono,monospace" font-size="8" fill="#8892a4">FastAPI — versioned routing · dependency injection · exception handling</text>
+
+          <!-- arrow -->
+          <line x1="260" y1="106" x2="260" y2="118" stroke="#00b4d8" stroke-width="1.5" stroke-opacity="0.6" marker-end="url(#arrow)"/>
+
+          <!-- L3: Application -->
+          <rect x="30" y="120" width="460" height="38" rx="5" fill="url(#layerGrad1)" stroke="#00b4d8" stroke-width="1" stroke-opacity="0.35"/>
+          <text x="50" y="135" font-family="IBM Plex Mono,monospace" font-size="9" fill="#00b4d8" font-weight="500">APPLICATION LAYER</text>
+          <text x="50" y="150" font-family="IBM Plex Mono,monospace" font-size="8" fill="#8892a4">Research · Chat · Report use cases — input validation · state normalization</text>
+
+          <!-- arrow -->
+          <line x1="260" y1="158" x2="260" y2="170" stroke="#00b4d8" stroke-width="1.5" stroke-opacity="0.6" marker-end="url(#arrow)"/>
+
+          <!-- L4: LangGraph -->
+          <rect x="30" y="172" width="460" height="42" rx="5" fill="url(#layerGrad2)" stroke="#f4a261" stroke-width="1.2" stroke-opacity="0.6"/>
+          <text x="50" y="187" font-family="IBM Plex Mono,monospace" font-size="9" fill="#f4a261" font-weight="500">GRAPH LAYER — LangGraph StateGraph</text>
+          <text x="50" y="203" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#8892a4">init_run → scope_question → generate_queries → search_web → synthesize_answer → finalize_run</text>
+          <text x="50" y="214" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#8892a4">conditional error routing → handle_error  |  nodes never raise exceptions</text>
+
+          <!-- split arrows -->
+          <line x1="175" y1="214" x2="115" y2="240" stroke="#00b4d8" stroke-width="1.5" stroke-opacity="0.6" marker-end="url(#arrow)"/>
+          <line x1="345" y1="214" x2="405" y2="240" stroke="#00b4d8" stroke-width="1.5" stroke-opacity="0.6" marker-end="url(#arrow)"/>
+
+          <!-- L5a: LLM Provider -->
+          <rect x="30" y="242" width="210" height="34" rx="5" fill="url(#layerGrad1)" stroke="#00b4d8" stroke-width="1" stroke-opacity="0.3"/>
+          <text x="50" y="257" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#00b4d8" font-weight="500">LLM PROVIDER</text>
+          <text x="50" y="270" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#8892a4">Groq · Ollama Cloud · Ollama Local</text>
+
+          <!-- L5b: Search Provider -->
+          <rect x="280" y="242" width="210" height="34" rx="5" fill="url(#layerGrad1)" stroke="#00b4d8" stroke-width="1" stroke-opacity="0.3"/>
+          <text x="300" y="257" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#00b4d8" font-weight="500">SEARCH PROVIDER</text>
+          <text x="300" y="270" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#8892a4">Tavily — structured results + images</text>
+
+          <!-- merge arrows -->
+          <line x1="135" y1="276" x2="200" y2="290" stroke="#00b4d8" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow)"/>
+          <line x1="385" y1="276" x2="320" y2="290" stroke="#00b4d8" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#arrow)"/>
+
+          <!-- L6: Database -->
+          <rect x="140" y="290" width="240" height="14" rx="4" fill="url(#accentGrad)" opacity="0.18" stroke="#00b4d8" stroke-width="1" stroke-opacity="0.4"/>
+          <text x="260" y="301" font-family="IBM Plex Mono,monospace" font-size="7.5" fill="#00b4d8" text-anchor="middle">DATABASE — SQLite / PostgreSQL · Repository Pattern</text>
+        </svg>
+      </div>
+
+      <!-- Design decisions -->
+      <div style="margin-bottom:1.2rem;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.55rem;">Key Design Decisions</div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--accent);background:rgba(0,180,216,0.08);border:1px solid rgba(0,180,216,0.25);padding:0.25rem 0.6rem;border-radius:4px;">State-based error routing</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--accent);background:rgba(0,180,216,0.08);border:1px solid rgba(0,180,216,0.25);padding:0.25rem 0.6rem;border-radius:4px;">Provider abstraction — 1 env var to swap LLM</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--accent);background:rgba(0,180,216,0.08);border:1px solid rgba(0,180,216,0.25);padding:0.25rem 0.6rem;border-radius:4px;">Repository Pattern — SQLite → PostgreSQL in 1 line</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--accent2);background:rgba(244,162,97,0.07);border:1px solid rgba(244,162,97,0.25);padding:0.25rem 0.6rem;border-radius:4px;">Multi-strategy test suite · SonarCloud CI gate</span>
+        </div>
+      </div>
+
+      <!-- Tech pills -->
       <div class="tech-pills">
         <span class="pill">LangGraph</span><span class="pill">FastAPI</span><span class="pill">Streamlit</span>
         <span class="pill">Groq · Llama 3.3 70B</span><span class="pill">Tavily</span><span class="pill">SQLite</span>
         <span class="pill">Docker</span><span class="pill">pytest</span><span class="pill">SonarCloud</span>
       </div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--accent);margin-bottom:1.2rem;">
-        175 tests · 8 test strategies · SonarCloud quality gate
-      </div>
+
+      <!-- Links -->
       <div class="project-links">
         <a href="https://tushark2111-focused-research-agent.hf.space" target="_blank" class="project-link">🚀 Live Demo ↗</a>
         <a href="https://github.com/tusharkhoche/focused-research-agent" target="_blank" class="project-link secondary">GitHub ↗</a>
