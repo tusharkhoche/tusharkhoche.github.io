@@ -601,7 +601,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#publication">Research</a></li>
+    <li><a href="#publication">Writing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://drive.google.com/file/d/1JTp6c3ZKfDNvMgcnQy5kVGKwlZhStLx7/view?usp=sharing" target="_blank" style="color:var(--accent2);border:1px solid rgba(244,162,97,0.4);padding:0.3rem 0.85rem;border-radius:4px;">Resume ↗</a></li>
   </ul>
@@ -965,7 +965,7 @@
 <!-- ── PUBLICATION ── -->
 <section id="publication">
   <p class="section-label reveal">// 05 · Research</p>
-  <h2 class="section-title reveal">Publication</h2>
+  <h2 class="section-title reveal">Publications &amp; Writing</h2>
   <div class="pub-card reveal">
     <div class="pub-badge">📄</div>
     <div class="pub-content">
@@ -977,6 +977,67 @@
       <a href="https://ieeexplore.ieee.org/document/9791545" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.6rem 1.25rem;">
         View on IEEE Xplore ↗
       </a>
+    </div>
+  </div>
+
+  <!-- Technical Writing -->
+  <div style="margin-top:2.5rem;">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:0.78rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Technical Writing · Kaggle</p>
+    <p style="color:var(--text-sub);font-size:0.95rem;margin-bottom:1.8rem;max-width:640px;">
+      In-depth notebooks breaking down deep learning concepts from first principles — written to teach, with worked examples and intuition over jargon.
+    </p>
+
+    <!-- Transformer Series -->
+    <div class="pub-card reveal" style="margin-bottom:1.2rem;">
+      <div class="pub-badge">🧠</div>
+      <div class="pub-content">
+        <p class="pub-journal">3-Part Series · Deep Learning Architecture</p>
+        <h3 class="pub-title">What is a Transformer?</h3>
+        <p class="pub-desc">
+          A ground-up explanation of the transformer architecture from "Attention Is All You Need" — why it replaced LSTMs, self-attention with Query/Key/Value vectors, dot-product attention scoring, softmax weighting, and how multiple attention layers combine into multi-head attention within an encoder-decoder model. Intuition-first, with original worked examples.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <a href="https://www.kaggle.com/code/tusharkhoche/what-is-a-transformer-part-1" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Part 1 ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/what-is-a-transformer-part-2" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Part 2 ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/what-is-a-transformer-part-3" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Part 3 ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seq2Seq LSTM Series -->
+    <div class="pub-card reveal" style="margin-bottom:1.2rem;">
+      <div class="pub-badge">🔁</div>
+      <div class="pub-content">
+        <p class="pub-journal">5-Part Series · NLP &amp; Sequence Models</p>
+        <h3 class="pub-title">Seq2Seq &amp; LSTM Encoder-Decoder</h3>
+        <p class="pub-desc">
+          A complete learning arc through sequence models: how simple RNNs work and their limitations, LSTM cell/hidden state memory, LSTM backpropagation, and the encoder-decoder architecture — culminating in a full hands-on Seq2Seq implementation (90+ code cells). The foundation that leads directly into attention and transformers.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <a href="https://www.kaggle.com/code/tusharkhoche/seq2seq-lstm-concept-part-01" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Part 1 ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/seq2seq-lstm-concept-part-02" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Part 2 ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/seq2seq-lstm-concept-part-03" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Part 3 ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/seq2seq-lstm-concept-part-04" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Part 4 ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/seq2seq-lstm-encoder-decoder-implementation" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Implementation ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ML Fundamentals -->
+    <div class="pub-card reveal">
+      <div class="pub-badge">📊</div>
+      <div class="pub-content">
+        <p class="pub-journal">ML Fundamentals · Maths &amp; Data Analysis</p>
+        <h3 class="pub-title">Neural Network Maths &amp; Applied ML</h3>
+        <p class="pub-desc">
+          Foundational notebooks bridging theory and applied practice: the mathematics of a simple neural network worked through from derivatives and backpropagation by hand, an in-depth Parkinson's disease dataset analysis (180+ code cells), and a beginner-friendly cardio fitness exploratory data analysis.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+          <a href="https://www.kaggle.com/code/tusharkhoche/mathematics-of-a-simple-neural-network" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">NN Maths ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/parkinsons-disease-dataset-analysis" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Parkinson's Analysis ↗</a>
+          <a href="https://www.kaggle.com/code/tusharkhoche/cardio-fitness-eda-beginner-friendly" target="_blank" class="btn btn-outline" style="font-size:0.7rem;padding:0.5rem 1rem;">Cardio EDA ↗</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
