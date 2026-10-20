@@ -255,6 +255,11 @@
   .project-card:hover { background: var(--bg-hover); }
   .project-card:hover::before { opacity: 1; }
 
+  /* 3 project cards: let the last card fill the row when the grid is 1-2 columns wide */
+  @media (min-width: 769px) and (max-width: 1519px) {
+    .project-card:last-child { grid-column: 1 / -1; }
+  }
+
   .project-tag {
     display: inline-block;
     font-family: 'IBM Plex Mono', monospace;
@@ -603,7 +608,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#publication">Writing</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="https://drive.google.com/file/d/1JTp6c3ZKfDNvMgcnQy5kVGKwlZhStLx7/view?usp=sharing" target="_blank" style="color:var(--accent2);border:1px solid rgba(244,162,97,0.4);padding:0.3rem 0.85rem;border-radius:4px;">Resume ↗</a></li>
+    <li><a href="https://drive.google.com/file/d/1t4FJV5uIWZnoFRzZysLx-Xe_z8QaYCxH/view?usp=sharing" target="_blank" style="color:var(--accent2);border:1px solid rgba(244,162,97,0.4);padding:0.3rem 0.85rem;border-radius:4px;">Resume ↗</a></li>
   </ul>
 </nav>
 
@@ -622,12 +627,12 @@
   <div class="hero-cta">
     <a href="#projects" class="btn btn-primary">View Projects →</a>
     <a href="https://tushark2111-focused-research-agent.hf.space" target="_blank" class="btn btn-outline">🚀 Live Demo</a>
-    <a href="https://drive.google.com/file/d/1JTp6c3ZKfDNvMgcnQy5kVGKwlZhStLx7/view?usp=sharing" target="_blank" class="btn btn-outline">📄 Resume</a>
+    <a href="https://drive.google.com/file/d/1t4FJV5uIWZnoFRzZysLx-Xe_z8QaYCxH/view?usp=sharing" target="_blank" class="btn btn-outline">📄 Resume</a>
     <a href="https://github.com/tusharkhoche" target="_blank" class="btn btn-ghost">GitHub ↗</a>
   </div>
   <div class="stats-bar">
     <div class="stat">
-      <div class="stat-num">4</div>
+      <div class="stat-num">3</div>
       <div class="stat-label">Featured AI Projects</div>
     </div>
     <div class="stat">
@@ -762,7 +767,7 @@
       <!-- Tech pills -->
       <div class="tech-pills">
         <span class="pill">LangGraph</span><span class="pill">FastAPI</span><span class="pill">Streamlit</span>
-        <span class="pill">Groq · Llama 3.3 70B</span><span class="pill">Tavily</span><span class="pill">SQLite</span>
+        <span class="pill">Ollama Cloud · gpt-oss 20B</span><span class="pill">Tavily</span><span class="pill">SQLite</span>
         <span class="pill">Docker</span><span class="pill">pytest</span><span class="pill">SonarCloud</span>
       </div>
 
@@ -791,22 +796,6 @@
     </div>
 
     <!-- Project 3 -->
-    <div class="project-card">
-      <span class="project-tag">🧠 Agentic AI</span>
-      <h3 class="project-name">Mood Journal Agent</h3>
-      <p class="project-desc">
-        A LangGraph StateGraph agentic AI that analyzes journal entries, classifies sentiment, extracts thematic tags, generates supportive reflections, and persists history across sessions. Built as a hands-on learning project to explore LangGraph node architecture, shared state management, and LLM integration with Groq API.
-      </p>
-      <div class="tech-pills">
-        <span class="pill">LangGraph</span><span class="pill">Groq API</span><span class="pill">LLaMA</span>
-        <span class="pill">StateGraph</span><span class="pill">JSON persistence</span><span class="pill">Python</span>
-      </div>
-      <div class="project-links">
-        <a href="https://github.com/tusharkhoche/mood_journal_agent" target="_blank" class="project-link">GitHub ↗</a>
-      </div>
-    </div>
-
-    <!-- Project 4 -->
     <div class="project-card">
       <span class="project-tag ieee">📄 IEEE Published</span>
       <h3 class="project-name">Distracted Driver Monitoring</h3>
@@ -1059,7 +1048,7 @@
       <a href="mailto:tusharkhoche@gmail.com" class="contact-link">
         ✉ Email
       </a>
-      <a href="https://drive.google.com/file/d/1JTp6c3ZKfDNvMgcnQy5kVGKwlZhStLx7/view?usp=sharing" target="_blank" class="contact-link highlight" style="border-color:rgba(244,162,97,0.4);color:var(--accent2);background:rgba(244,162,97,0.06);">
+      <a href="https://drive.google.com/file/d/1t4FJV5uIWZnoFRzZysLx-Xe_z8QaYCxH/view?usp=sharing" target="_blank" class="contact-link highlight" style="border-color:rgba(244,162,97,0.4);color:var(--accent2);background:rgba(244,162,97,0.06);">
         📄 Resume
       </a>
       <a href="https://github.com/tusharkhoche" target="_blank" class="contact-link">
